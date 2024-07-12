@@ -1,3 +1,6 @@
+using SportScore.API.Data;
+using SportScore.API.Services;
+
 namespace SportScore.API
 {
     public class Program
@@ -6,6 +9,8 @@ namespace SportScore.API
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddScoped<ISportService, SportService>();
+            builder.Services.AddDbContext<SportContext>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
